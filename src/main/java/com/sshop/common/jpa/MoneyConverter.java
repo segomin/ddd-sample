@@ -1,7 +1,7 @@
 package com.sshop.common.jpa;
 
 
-import com.sshop.domain.model.common.Money;
+import com.sshop.common.Money;
 
 import javax.persistence.AttributeConverter;
 

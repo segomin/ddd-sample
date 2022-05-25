@@ -1,7 +1,7 @@
 package com.sshop.common.jpa;
 
-import com.sshop.domain.model.common.Email;
-import com.sshop.domain.model.common.EmailSet;
+import com.sshop.common.Email;
+import com.sshop.common.EmailSet;
 
 import javax.persistence.AttributeConverter;
 import java.util.Arrays;
