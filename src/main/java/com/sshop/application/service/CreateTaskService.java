@@ -2,7 +2,7 @@ package com.sshop.application.service;
 
 import com.sshop.application.model.ResourceTaskFactory;
 import com.sshop.application.model.order.CreateTaskRequest;
-import com.sshop.domain.model.task.TaskRepository;
+import com.sshop.application.port.out.TaskRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

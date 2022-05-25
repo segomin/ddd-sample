@@ -1,6 +1,10 @@
-package com.sshop.domain.model.task;
+package com.sshop.application.port.out;
 
 import com.sshop.application.model.resource.ResourceTaskData;
+import com.sshop.domain.model.task.ComputeTask;
+import com.sshop.domain.model.task.ResourceType;
+import com.sshop.domain.model.task.StorageTask;
+import com.sshop.domain.model.task.TaskId;
 
 import java.util.List;
 import java.util.function.Function;

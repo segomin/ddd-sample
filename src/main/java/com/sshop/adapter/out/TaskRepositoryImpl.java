@@ -8,7 +8,7 @@ import com.sshop.domain.model.task.ResourceTask;
 import com.sshop.domain.model.task.ResourceType;
 import com.sshop.domain.model.task.StorageTask;
 import com.sshop.domain.model.task.TaskId;
-import com.sshop.domain.model.task.TaskRepository;
+import com.sshop.application.port.out.TaskRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
