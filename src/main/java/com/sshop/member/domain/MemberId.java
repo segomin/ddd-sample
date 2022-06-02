@@ -1,4 +1,4 @@
-package com.sshop.order.domain;
+package com.sshop.member.domain;
 
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
@@ -9,19 +9,22 @@ import javax.persistence.Access;
 import javax.persistence.AccessType;
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import java.io.Serializable;
 
-@Access (AccessType.FIELD)
+@Access(AccessType.FIELD)
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
 @EqualsAndHashCode
 @Embeddable
-public class OrderNo implements Serializable {
-	@Column (name = "order_no", length = 50)
-	private String number;
+public class MemberId implements Serializable {
+	@GeneratedValue (strategy = GenerationType.IDENTITY)
+	@Column (name = "member_id")
+	private Long id;
 
-	public static OrderNo of(String number) {
-		return new OrderNo(number);
+	public static MemberId of(Long id) {
+		return new MemberId(id);
 	}
 }

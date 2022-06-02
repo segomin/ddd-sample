@@ -1,5 +1,6 @@
 package com.sshop.order.domain;
 
+import com.sshop.cart.domain.Cart;
 import com.sshop.common.event.Events;
 import com.sshop.common.jpa.MoneyConverter;
 import com.sshop.common.Money;
@@ -19,12 +20,14 @@ import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.OrderColumn;
+import javax.persistence.Table;
 import java.time.LocalDateTime;
 import java.util.List;
 
 @Getter
 @NoArgsConstructor
 @Entity
+@Table (name = "`order`")
 public class Order {
 	@EmbeddedId
 	private OrderNo no;
@@ -36,7 +39,7 @@ public class Order {
 	private ProjectId projectId;
 
 	@ElementCollection (fetch = FetchType.LAZY)
-	@CollectionTable (name = "order_item", joinColumns = @JoinColumn (name = "order_number"))
+	@CollectionTable (name = "order_item", joinColumns = @JoinColumn (name = "order_no"))
 	@OrderColumn (name = "item_idx")
 	private List<OrderItem> orderItems;
 
@@ -60,7 +63,6 @@ public class Order {
 		this.projectId = projectId;
 		this.state = state;
 		this.orderDate = LocalDateTime.now();
-		Events.raise(new OrderPlacedEvent(number.getNumber(), orderer, orderItems, orderDate));
 	}
 
 	private void setNumber(OrderNo number) {

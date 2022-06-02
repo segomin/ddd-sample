@@ -2,30 +2,46 @@ package com.sshop.cart.domain;
 
 import com.sshop.common.Money;
 import com.sshop.common.jpa.MoneyConverter;
-import com.sshop.member.MemberId;
+import com.sshop.member.domain.MemberId;
 import com.sshop.project.domain.ProjectId;
+import lombok.AllArgsConstructor;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import javax.persistence.Access;
+import javax.persistence.AccessType;
+import javax.persistence.AttributeOverride;
+import javax.persistence.AttributeOverrides;
 import javax.persistence.Column;
 import javax.persistence.Convert;
+import javax.persistence.Embeddable;
+import javax.persistence.Embedded;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import java.io.Serializable;
 
+@Access (AccessType.FIELD)
 @Getter
 @NoArgsConstructor
 @Entity
 public class Cart {
+	@AttributeOverrides (
+			@AttributeOverride (name = "value", column = @Column (name = "id"))
+	)
 	@EmbeddedId
 	private CartId id;
 
+	@Embedded
+	private ProjectId projectId;
+
+	@Embedded
 	private MemberId memberId;
 
 	@Convert (converter = MoneyConverter.class)
-	@Column (name = "price")
 	private Money price;
-
-	private ProjectId projectId;
 
 	private String someName;
 
@@ -41,5 +57,21 @@ public class Cart {
 		this.someName = someName;
 		this.someField = someField;
 		this.someJson = someJson;
+	}
+
+	@AllArgsConstructor
+	@NoArgsConstructor
+	@Getter
+	@EqualsAndHashCode
+	@Embeddable
+	@Access(AccessType.FIELD)
+	public static class CartId implements Serializable {
+		@GeneratedValue (strategy = GenerationType.IDENTITY)
+		@Column (name = "cart_id")
+		private Long value;
+
+		public static CartId of(Long id) {
+			return new CartId(id);
+		}
 	}
 }

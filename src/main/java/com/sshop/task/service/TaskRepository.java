@@ -1,6 +1,6 @@
 package com.sshop.task.service;
 
-import com.sshop.task.service.model.ResourceTaskData;
+import com.sshop.task.service.model.ResourceTaskJpaEntity;
 import com.sshop.task.domain.ComputeTask;
 import com.sshop.task.domain.ResourceType;
 import com.sshop.task.domain.StorageTask;
@@ -12,7 +12,7 @@ import java.util.function.Function;
 
 public interface TaskRepository {
 
-	<T> List<T> findAllByType(ResourceType type, Function<ResourceTaskData, T> convert);
+	<T> List<T> findAllByType(ResourceType type, Function<ResourceTaskJpaEntity, T> convert);
 
 	TaskId saveCompute(ComputeTask task);
 
