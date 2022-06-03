@@ -1,7 +1,7 @@
-package com.sshop.cart.application.service;
+package com.sshop.cart.application.service.get;
 
 import com.sshop.cart.adapter.out.CartJpaRepository;
-import com.sshop.cart.application.service.model.CartResponse;
+import com.sshop.cart.application.service.get.CartResponse;
 import com.sshop.cart.domain.Cart;
 import com.sshop.common.annotation.UseCase;
 import com.sshop.member.domain.MemberId;

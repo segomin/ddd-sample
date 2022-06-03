@@ -1,4 +1,4 @@
-package com.sshop.cart.application.service.model;
+package com.sshop.cart.application.service.get;
 
 import com.sshop.task.service.model.Resource;
 import com.sshop.cart.domain.Cart;

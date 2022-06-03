@@ -1,4 +1,4 @@
-package com.sshop.cart.application.service.model;
+package com.sshop.cart.application.service.create;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

@@ -1,5 +1,6 @@
-package com.sshop.cart.application.service.model;
+package com.sshop.cart.application.service.create;
 
+import com.sshop.cart.application.service.create.CreateCartRequest;
 import lombok.Value;
 
 import java.util.List;

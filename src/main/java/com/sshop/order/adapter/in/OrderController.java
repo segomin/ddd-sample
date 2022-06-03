@@ -1,7 +1,7 @@
 package com.sshop.order.adapter.in;
 
 import com.sshop.order.application.service.CreateOrderRequest;
-import com.sshop.cart.application.service.CartQueryService;
+import com.sshop.cart.application.service.get.CartQueryService;
 import com.sshop.task.service.model.Resource;
 import com.sshop.order.application.service.CreateOrderService;
 import com.sshop.order.domain.OrderNo;

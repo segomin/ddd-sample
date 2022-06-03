@@ -1,6 +1,6 @@
 package com.sshop.cart.adapter.in;
 
-import com.sshop.cart.application.service.CartQueryService;
+import com.sshop.cart.application.service.get.CartQueryService;
 import com.sshop.task.service.model.Resource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;

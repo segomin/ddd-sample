@@ -1,4 +1,4 @@
-package com.sshop.cart.application.service;
+package com.sshop.cart.application.service.edit;
 
 import com.sshop.cart.application.port.out.RemoveCartPort;
 import com.sshop.cart.domain.Cart;

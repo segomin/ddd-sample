@@ -1,6 +1,6 @@
-package com.sshop.cart.application.service;
+package com.sshop.cart.application.service.create;
 
-import com.sshop.cart.application.service.model.CreateCartComputeRequest;
+import com.sshop.cart.application.service.create.CreateCartComputeRequest;
 import com.sshop.common.ValidationError;
 import org.springframework.util.StringUtils;
 
