@@ -1,5 +1,6 @@
 package com.sshop.task.domain;
 
+import com.sshop.common.domain.AggregateRoot;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
@@ -7,7 +8,7 @@ import java.util.Objects;
 
 @AllArgsConstructor
 @Getter
-public abstract class ResourceTask {
+public abstract class ResourceTask implements AggregateRoot {
 	final TaskId taskId;
 	final ResourceType resourceType;
 

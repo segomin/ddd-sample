@@ -1,4 +1,4 @@
 package com.sshop.common.domain;
 
-public interface RootAggregate {
+public interface AggregateRoot {
 }

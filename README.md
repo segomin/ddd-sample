@@ -22,13 +22,18 @@
     - 초반에는 좋아보였으나, 한 package 다양한 성격(service, model, exception 등) 의 file 이 섞이고,
     - sub-domain 내에 다수 aggregate 를 넣는 방식이 너무 번거스러워 보임 (책 내용 자체는 좋음)
     - CQRS idea 는 여전히 괜찮아 보임
-- boilerplate code 가 많아질 수 있으나, work-management 의 역할이 많고 복잡하여 domain 별로 구성요소를 분리하는 방법이 적합하다고 판단함
-- 특히 controller 에서 받은 data 와 domain 에서 처리하는 data 및 저장 data 가 서로 달라야 하는 경우들이 존재함
-  - ex) 
+- 주요 선택 기준
+  - boilerplate code 가 많아질 수 있으나, work-management 의 역할이 많고 복잡하여 domain 별로 구성요소를 분리하는 방법이 적합하다고 판단함
+  - 특히 controller 에서 받은 data 와 domain 에서 처리하는 data 및 저장 data 가 서로 달라야 하는 경우들이 존재함
+    - `cart 에 resource 를 담을 때, 각 resource 별 field 검증은 필요한, domain 로직에서는 상세 resource 는 알 필요 없음`
+    - `상세 resource 를 기반으로 task 로직을 수행 후 영속성 영역에 저장시 general 한 entity 로 변경 해야함` 
+  - port.out 사용시 domain 과 별도로 table field 변경이 용이함
+    - `json field 를 조건으로 resource 검색 시 성능개선을 위해 field 로 빼더라도 domain 역역에 영향을 주지 않음`
 - 참고도서
   - [만들면서 배우는 클린 아키텍처](http://www.yes24.com/Product/Goods/105138479), [GitHub](https://github.com/wikibook/clean-architecture)
   - 원제 [Get Your Hands Dirty on Clean Architecture](https://www.amazon.com/Hands-Dirty-Clean-Architecture-hands/dp/1839211962), [GitHub](https://github.com/thombergs/buckpal)
   - [도메인 주도 설계 핵심](http://www.yes24.com/Product/Goods/48577718)
+  - [도메인 주도 개발 시작하기](http://www.yes24.com/product/goods/108431347)
 ## 기본 구조
 - 의존관계
   - `[adapter.in]` -> `[application.port.in]` ᐊ- `[application.service]` → `[application.port.out]` ᐊ- `[adapter.out]` → `[adapter.out]`           
@@ -55,6 +60,9 @@
   - 도메인 로직을 구현하면서 하나의 aggregate 에 종속되지 않는 서비스
   - 가능하면 도메인 서비스 대신 aggregate 에서 도메인 로직을 사용을 권장함
   - 위치는 domain 패키지 내에 둠
+- Aggregate
+  - aggregate 내에서는 다른 aggregate 의 객체를 직접 참조하면 안됨
+  - 복수의 aggregate 에 걸친 로직은 도메인 서비스 혹은 응용서비스에서 매핑하거나 조합해야 함 
 
 ## 모델의 매핑 전략
 - 주로 양방향 매핑 사용
@@ -104,7 +112,7 @@
   - job 과 task 생성
   - job: job 과 task 의 상태 관리(승인, 반려 포함)
   - task: task 실행 및 상태관리
-- task-history : 
+  - task-history
 
 # build
 - 

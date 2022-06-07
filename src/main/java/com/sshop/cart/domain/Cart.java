@@ -1,6 +1,7 @@
 package com.sshop.cart.domain;
 
 import com.sshop.common.Money;
+import com.sshop.common.domain.AggregateRoot;
 import com.sshop.common.jpa.MoneyConverter;
 import com.sshop.member.domain.MemberId;
 import com.sshop.project.domain.ProjectId;
@@ -27,7 +28,7 @@ import java.io.Serializable;
 @Getter
 @NoArgsConstructor
 @Entity
-public class Cart {
+public class Cart implements AggregateRoot {
 	@AttributeOverrides (
 			@AttributeOverride (name = "value", column = @Column (name = "id"))
 	)

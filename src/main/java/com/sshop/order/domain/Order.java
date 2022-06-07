@@ -1,6 +1,7 @@
 package com.sshop.order.domain;
 
 import com.sshop.cart.domain.Cart;
+import com.sshop.common.domain.AggregateRoot;
 import com.sshop.common.event.Events;
 import com.sshop.common.jpa.MoneyConverter;
 import com.sshop.common.Money;
@@ -28,7 +29,7 @@ import java.util.List;
 @NoArgsConstructor
 @Entity
 @Table (name = "`order`")
-public class Order {
+public class Order implements AggregateRoot {
 	@EmbeddedId
 	private OrderNo no;
 
