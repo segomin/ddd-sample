@@ -14,7 +14,7 @@ import java.util.List;
 /**
  * 다중 이벤트 리스너 사용시 순서 보장 필요시 Order(N) 사용
  */
-@Disabled
+//@Disabled
 class MultipleEventHandlerTest {
 	private final ApplicationContextRunner runner = new ApplicationContextRunner();
 

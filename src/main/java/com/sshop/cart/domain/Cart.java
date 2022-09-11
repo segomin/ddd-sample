@@ -1,5 +1,6 @@
 package com.sshop.cart.domain;
 
+import com.google.gson.Gson;
 import com.sshop.common.Money;
 import com.sshop.common.domain.AggregateRoot;
 import com.sshop.common.jpa.MoneyConverter;
@@ -58,6 +59,14 @@ public class Cart implements AggregateRoot {
 		this.someName = someName;
 		this.someField = someField;
 		this.someJson = someJson;
+	}
+
+	public String getJsonData() {
+		return new Gson().toJson(this);
+	}
+
+	public void changeJsonData(String jsonString) {
+		this.someJson = jsonString;
 	}
 
 	@AllArgsConstructor

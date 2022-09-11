@@ -24,7 +24,7 @@ public class CreateCartService {
 				request.getVolumeGroupName(),
 				request.getVolumeMemo(),
 				request.getCapacities().toString());
-		createCartPort.createCart(cart);
+		createCartPort.saveCart(cart);
 		return cart.getId();
 	}
 
@@ -36,7 +36,7 @@ public class CreateCartService {
 				request.getServiceType(),
 				request.getServiceEnv(),
 				request.getDiskType());
-		createCartPort.createCart(cart);
+		createCartPort.saveCart(cart);
 		return cart.getId();
 	}
 

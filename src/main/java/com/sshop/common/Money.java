@@ -1,6 +1,14 @@
 package com.sshop.common;
 
-public record Money(int value) {
+import lombok.Value;
+
+import java.util.Objects;
+
+@Value
+public class Money {
+    private final int value;
+
+    public Money(int value) {this.value = value;}
 
     public Money multiply(int multiplier) {
         return new Money(value * multiplier);
@@ -10,8 +18,5 @@ public record Money(int value) {
         return new Money(value);
     }
 
-    @Override
-    public String toString() {
-        return Integer.toString(value);
-    }
+    public int value() {return value;}
 }

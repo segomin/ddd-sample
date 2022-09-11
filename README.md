@@ -81,7 +81,7 @@
 - 결재(approval)
 - 결제(payment)
 - 업무(job)
-- 요청사항(requirement) : 결재된 주문 단위의 고객 요청 사항 뭉탱이
+- 요청사항(work) : 결재된 주문 단위의 고객 요청 사항 뭉탱이
   - requirement 1:N job(=order) 1:N task 
   - (work 로 할까 생각해 봤으나, 작업의 관점 보다는 요구사항에 대해 부각하는게 더 좋을듯 함) 
 - 업무(job) : order 단위의 업무
@@ -107,12 +107,12 @@
   - order-item
 - (approval)
 - member
-- requirement
+- work (결제단위 승인, 반려)
   - prior-job: 결재라인 등록, asset 준비
   - job 과 task 생성
-  - job: job 과 task 의 상태 관리(승인, 반려 포함)
-  - task: task 실행 및 상태관리
-  - task-history
+- job: job 과 task 의 상태 관리 (사전협의 승인, 반려 포함)
+- task: task 실행 및 상태관리
+- task-history
 
 # build
 - 
