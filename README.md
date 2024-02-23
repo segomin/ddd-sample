@@ -2,7 +2,7 @@
 
 # title: 가상 CMP (infra shop)
 
-# senario flow
+# flow
 - `cart` -> `order-box` -> `order` -> `requirement`, `job`, `task`
 
 # Architecture
