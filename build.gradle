@@ -32,6 +32,10 @@ dependencies {
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
 
+tasks.named('bootJar') {
+	mainClass = 'com.sshop.ShopApplication'
+}
+
 tasks.named('test') {
 	useJUnitPlatform()
 }
