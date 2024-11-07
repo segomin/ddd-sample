@@ -1,30 +1,21 @@
-# Use an official OpenJDK runtime as a parent image
-FROM openjdk:17-jdk
+# Step 1: Set the base image
+FROM openjdk:17-jdk as build
 
-# Set the working directory in the container
-WORKDIR /app
+# Step 2: Set the working directory
+WORKDIR /workspace/app
 
-# Copy the build.gradle and settings.gradle files
-COPY build.gradle settings.gradle /app/
+# Step 3: Copy the project files to the working directory
+COPY . .
 
-# Copy the gradle wrapper files
-COPY gradlew /app/
-COPY gradle /app/gradle
+# Step 4: Run the Gradle build
+RUN chmod +x ./gradlew
+RUN ./gradlew build
 
-# Download the dependencies
-RUN ./gradlew build -x test --parallel --continue
-
-# Copy the project source
-COPY src /app/src
-
-# Build the application
-RUN ./gradlew build -x test
-
-# Copy the jar file to the container
-COPY build/libs/*.jar app.jar
+# Step 5: Copy the build output (JAR file) to the image
+FROM openjdk:21-jdk-slim
+COPY --from=build /workspace/app/build/libs/*.jar app.jar
 
 # Expose the port the app runs on
 EXPOSE 8080
 
-# Run the jar file
-ENTRYPOINT ["java", "-jar", "app.jar"]
+ENTRYPOINT ["java", "-Dserver.port=8080", "-jar", "/app.jar"]
