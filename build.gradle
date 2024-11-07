@@ -39,3 +39,8 @@ tasks.named('bootJar') {
 tasks.named('test') {
 	useJUnitPlatform()
 }
+
+// prevent build create xxx-plain.jar 
+jar {
+	enabled = false
+}
